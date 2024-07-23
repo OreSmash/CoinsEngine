@@ -3,7 +3,9 @@ version: '${project.version}'
 name: CoinsEngine
 author: NightExpress
 desciption: Unlimited virtual currencies with Vault Economy support!
-depend: [ nightcore ]
+depend:
+  - nightcore
+  - SmashEngine
 softdepend:
   - Vault
   - PlaceholderAPI

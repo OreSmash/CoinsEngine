@@ -13,6 +13,8 @@ import su.nightexpress.nightcore.util.text.NightMessage;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import static com.oresmash.smashengine.SmashEngine.textUtils;
+
 public class PlaceholderAPIHook {
 
     private static PointsExpansion expansion;
@@ -133,21 +135,21 @@ public class PlaceholderAPIHook {
                 Currency currency = plugin.getCurrencyManager().getCurrency(currencyId);
                 if (currency == null) return null;
 
-                return NumberUtil.format(currency.fine(user.getBalance(currency)));
+                return textUtils.decimal(currency.fine(user.getBalance(currency)), 0);
             }
             if (holder.startsWith("balance_short_")) {
                 String currencyId = holder.substring("balance_short_".length());
                 Currency currency = plugin.getCurrencyManager().getCurrency(currencyId);
                 if (currency == null) return null;
 
-                return NightMessage.asLegacy(currency.formatCompact(user.getBalance(currency))); // allow per-currency formatting
+                return textUtils.character(user.getBalance(currency), 1); // allow per-currency formatting
             }
             if (holder.startsWith("balance_")) {
                 String currencyId = holder.substring("balance_".length());
                 Currency currency = plugin.getCurrencyManager().getCurrency(currencyId);
                 if (currency == null) return null;
 
-                return NightMessage.asLegacy(currency.format(user.getBalance(currency)));
+                return currency.format(user.getBalance(currency));
             }
 
             return null;

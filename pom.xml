@@ -59,7 +59,15 @@
         <dependency>
             <groupId>su.nightexpress.nightcore</groupId>
             <artifactId>nightcore</artifactId>
-            <version>2.6.3</version>
+            <version>latest</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/libs/nightcore-2.6.3.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.oresmash</groupId>
+            <artifactId>smashengine</artifactId>
+            <version>1.0.4</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>me.clip</groupId>
