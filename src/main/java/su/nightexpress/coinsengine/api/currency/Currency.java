@@ -10,6 +10,8 @@ import su.nightexpress.nightcore.util.NumberUtil;
 import su.nightexpress.nightcore.util.Pair;
 import su.nightexpress.nightcore.util.placeholder.Placeholder;
 
+import static com.oresmash.smashengine.SmashEngine.textUtils;
+
 public interface Currency extends Placeholder {
 
     default boolean isUnlimited() {
@@ -62,6 +64,16 @@ public interface Currency extends Placeholder {
     default String format(double balance) {
         return this.replacePlaceholders()
                 .apply(this.getFormat()).replace(Placeholders.GENERIC_AMOUNT, this.formatValue(balance));
+    }
+
+    default String properFormat(Currency currency, double balance) {
+        if (currency.getId().equalsIgnoreCase("shards")) {
+            return this.replacePlaceholders()
+                    .apply(this.getFormat()).replace(Placeholders.GENERIC_AMOUNT, this.formatValue(balance));
+        } else {
+            return this.replacePlaceholders()
+                    .apply(this.getFormat()).replace(Placeholders.GENERIC_AMOUNT, textUtils.character(balance, 1));
+        }
     }
 
     @NotNull

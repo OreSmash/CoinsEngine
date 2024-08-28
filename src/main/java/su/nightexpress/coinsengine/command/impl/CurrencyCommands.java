@@ -439,7 +439,7 @@ public class CurrencyCommands {
                 for (Pair<String, Double> pair : list) {
                     list1.add(Lang.COMMAND_CURRENCY_TOP_ENTRY.getString()
                         .replace(Placeholders.GENERIC_POS, NumberUtil.format(pos.getAndIncrement()))
-                        .replace(Placeholders.GENERIC_BALANCE, currency.format(pair.getSecond()))
+                        .replace(Placeholders.GENERIC_BALANCE, currency.properFormat(currency, pair.getSecond()))
                         .replace(Placeholders.PLAYER_NAME, pair.getFirst()));
                 }
             })
